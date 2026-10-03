@@ -1,74 +1,114 @@
 # Resourcify
 
-Campus Resource Management Platform for conflict-free booking of classrooms, labs, equipment, auditoriums, and shared spaces.
+## Smart Campus Resource Management Platform
 
-Live app: https://resourcify-apex.vercel.app
+Resourcify is a full-stack campus resource management platform designed to centralize the discovery, scheduling, and management of shared institutional resources such as classrooms, laboratories, equipment, auditoriums, and other campus spaces.
 
-## Current Stack
+The platform provides structured workflows for resource discovery, booking, conflict detection, administrative approvals, user management, and booking oversight.
 
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- Supabase Auth with email/password sessions
-- Supabase-backed resources, bookings, admin settings, and user management APIs
-- Role-checked admin APIs
-- Vercel deployment
+## Overview
 
-## Local Setup
+Managing shared campus resources often involves spreadsheets, manual approvals, and scheduling conflicts.
 
-```bash
-npm install
-npm run dev
-```
+Resourcify brings these workflows into a centralized web application where users can:
 
-Open http://localhost:3000.
+- Browse available campus resources
+- Create and manage bookings
+- Detect conflicting reservations
+- Track booking status
+- Manage resources through administrative workflows
+- Review pending approvals
+- Monitor booking activity
+- Manage users and system settings
+- Review audit records
 
-Required environment variables:
+The application is built using Next.js, TypeScript, Tailwind CSS, and Supabase.
 
-```bash
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
-```
+## Key Features
 
-Authentication is currently parked for sprint velocity. The deployed MVP runs in demo-open mode unless this optional variable is set:
+### Resource Management
 
-```bash
-AUTH_ENFORCED=true
-```
+- Centralized resource catalog
+- Resource availability tracking
+- Classroom, laboratory, equipment, and shared-space management
+- Administrative resource management
 
-For production verification:
+### Booking Management
 
-```bash
-npm run build
-```
+- Create and manage resource bookings
+- Conflict detection for overlapping reservations
+- Booking status tracking
+- Administrative approval workflows
+- Booking history and oversight
 
-## Supabase Migrations
+### Role-Based Access
 
-Apply the SQL files in `supabase/migrations` in order:
+Administrative workflows provide controlled access to:
 
-1. `0001_initial_schema.sql`
-2. `0002_expand_public_user_roles.sql`
-3. `0003_user_status.sql`
-4. `0004_system_settings.sql`
+- Users
+- Resources
+- Bookings
+- Pending approvals
+- Conflicts
+- Analytics
+- Audit records
+- System settings
 
-`0003_user_status.sql` enables persistent admin user enable/disable.
-`0004_system_settings.sql` enables persistent booking settings.
+### Authentication
 
-## Sprint Workflow
+Supabase Authentication is used for user authentication and session management.
 
-Each sprint handles one feature at a time.
+### Admin Dashboard
 
-1. Sprint overview is shared first.
-2. Work starts only after sprint approval.
-3. Output is reviewed before commit.
-4. Commit and push happen only after output approval.
-5. The next sprint starts after the team says `<number>-sprint completed`.
+The administrative interface provides dedicated sections for:
 
-## Deployment
+- Analytics
+- Bookings
+- Resources
+- Pending approvals
+- Conflict monitoring
+- User management
+- Audit records
+- System settings
 
-The current production deployment is hosted on Vercel:
+## Technology Stack
 
-https://resourcify-apex.vercel.app
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 14 |
+| Language | TypeScript |
+| UI | React |
+| Styling | Tailwind CSS |
+| Authentication | Supabase Auth |
+| Database | Supabase |
+| API | Next.js API Routes |
+| Deployment | Vercel |
+| Version Control | Git, GitHub |
 
-Automatic GitHub deployments still need the Vercel account to connect GitHub as a login connection.
+## Project Structure
+
+```text
+Resourcify/
+│
+├── src/
+│   ├── app/
+│   │   ├── admin/
+│   │   ├── api/
+│   │   ├── bookings/
+│   │   ├── dashboard/
+│   │   ├── login/
+│   │   ├── profile/
+│   │   └── resources/
+│   │
+│   ├── components/
+│   └── lib/
+│
+├── supabase/
+│   └── migrations/
+│
+├── .env.example
+├── middleware.ts
+├── next.config.mjs
+├── package.json
+├── tailwind.config.ts
+└── tsconfig.json
